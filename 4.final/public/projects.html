@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beautiful Colorful Animation</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: black;
+      }
+
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: float 20s infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-200px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const colors = [
+        "#FF5733",
+        "#33FF57",
+        "#3357FF",
+        "#FF33A1",
+        "#A1FF33",
+        "#33A1FF",
+        "#FFD700",
+      ];
+      const numCircles = 10;
+
+      for (let i = 0; i < numCircles; i++) {
+        const circle = document.createElement("div");
+        const size = Math.random() * 200 + 50;
+        circle.classList.add("circle");
+        circle.style.width = `${size}px`;
+        circle.style.height = `${size}px`;
+        circle.style.background =
+          colors[Math.floor(Math.random() * colors.length)];
+        circle.style.left = `${Math.random() * 100}vw`;
+        circle.style.top = `${Math.random() * 100}vh`;
+        circle.style.animationDelay = `${Math.random() * 20}s`;
+        circle.style.animationDuration = `${Math.random() * 30 + 20}s`;
+        document.body.appendChild(circle);
+      }
+    </script>
+  </body>
+</html>
